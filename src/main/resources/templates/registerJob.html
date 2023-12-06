@@ -69,26 +69,26 @@
 <div class="green-box">
   <h2 class="form-title">일일 일자리 등록하기</h2>
   <!-- 타임리프 액션 및 메소드 속성을 사용하여 폼 구성 -->
-  <form th:action="@{/registerJob}" th:object="${jobForm}" method="post">
+  <form id="registrationJob" method="post">
     <label for="jobDescription">하는일:</label>
     <!-- th:field 속성을 사용하여 모델 객체에 데이터 바인딩 -->
-    <input type="text" id="jobDescription" th:field="*{jobDescription}" required>
+    <input type="text" id="jobDescription" name="jobDescription" required th:value="${jobDescription}" >
 
     <label for="requirements">요구사항:</label>
-    <input type="text" id="requirements" th:field="*{requirements}" required>
+    <input type="text" id="requirements" name="requirements" required th:value="${requirements}" >
 
     <label for="workingDays">근무일:</label>
-    <input type="text" id="workingDays" th:field="*{workingDays}" required>
+    <input type="text" id="workingDays" name="workingDays" required th:value="${workingDays}" >
 
     <label for="workingPlace">일하는 장소:</label>
-    <input type="text" id="workingPlace" th:field="*{workingPlace}" required>
+    <input type="text" id="workingPlace" name="workingPlace" required th:value="${workingPlace}">
 
     <label for="hourlyRate">시급:</label>
-    <input type="text" id="hourlyRate" th:field="*{hourlyRate}" required>
+    <input type="text" id="hourlyRate" name="hourlyRate" required th:value="${hourlyRate}">
 
     <input type="submit" value="저장">
   </form>
 </div>
-<script src="registerJob.js"></script>
+<script src="/registerJob.js"></script>
 </body>
 </html>
