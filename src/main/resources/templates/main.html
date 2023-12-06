@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneQJob</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .half-background {
+            background: linear-gradient(to right, #34d399 50%, white 50%);
+        }
+        .button {
+            width: 200px;
+            height: 50px;
+            background-color: #2f855a;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .logo-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            z-index: 10;
+        }
+        .logo {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+        .left-side {
+            position: absolute;
+            left: calc(50% - 150px - 260px);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+        }
+        .right-side-content {
+            position: absolute;
+            left: calc(50% + 150px + 50px);
+            top: 50%;
+            transform: translateY(-50%);
+            height: 500px;
+        }
+        .right-side-image {
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="half-background">
+<div class="h-screen relative">
+    <!-- Left Side Buttons -->
+    <div class="left-side space-y-5">
+        <!--/*@thymesVar id="viewJob" type="String"*/-->
+        <button class="button" th:text="${viewJob}" th:onclick="'window.location.href=\'' + @{/OneQJob/viewAllJob} + '\''">일자리보기</button>
+
+        <!--/*@thymesVar id="registerJob" type="String"*/-->
+        <button class="button" th:text="${registerJob}" th:onclick="'window.location.href=\'' + @{/OneQJob/registerNewJob} + '\''">일자리등록</button>
+
+        <!--/*@thymesVar id="registerIndividual" type="String"*/-->
+        <button class="button" th:text="${registerIndividual}" th:onclick="'window.location.href=\'' + @{/OneQJob/registerForIndividual} + '\''">개인용 회원가입</button>
+
+        <!--/*@thymesVar id="registerCorporate" type="String"*/-->
+        <button class="button" th:text="${registerCorporate}" th:onclick="'window.location.href=\'' + @{/OneQJob/registerForCompany} + '\''">기업용 회원가입</button>
+
+        <!--/*@thymesVar id="login" type="String"*/-->
+        <button class="button" th:text="${login}" th:onclick="'window.location.href=\'' + @{/OneQJob/Login} + '\''">로그인</button>
+    </div>
+
+
+    <!-- Logo Wrapper -->
+    <div class="logo-wrapper">
+        <!-- Logo Image -->
+        <img th:src="@{https://github.com/donghee9/pictureForJob/assets/129722492/736cdd15-55e5-4345-aa54-734f57eb4e32}" alt="OneQJob Logo" class="logo">
+    </div>
+
+    <!-- Right Side Content -->
+    <div class="right-side-content">
+        <!-- Right Side Image -->
+        <img th:src="@{https://github.com/donghee9/pictureForJob/assets/129722492/66ac0bfd-1378-44f3-9a88-fea1f9efc024}" alt="OneQJob Features" class="right-side-image">
+    </div>
+</div>
+</body>
+</html>

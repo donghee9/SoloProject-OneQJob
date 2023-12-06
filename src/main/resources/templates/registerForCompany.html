@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기업용 회원가입</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0; /* Light grey background */
+    }
+
+    .green-box {
+      background-color: #48bb78; /* Green background */
+      width: 450px; /* Width of the box */
+      height: 500px; /* Height of the box */
+      padding: 20px; /* Padding inside the box */
+      box-sizing: border-box; /* Ensures padding is included in the width and height */
+      border-radius: 10px; /* Rounded corners */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px; /* Space between form elements */
+    }
+
+    h2.form-title {
+      color: white; /* Black text for title */
+      margin-bottom: 20px; /* Space below title */
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="password"] {
+      width: 100%; /* Full width of container */
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd; /* Light gray border */
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%; /* Full width of container */
+      padding: 10px;
+      border: none;
+      background-color: #38a169; /* Darker green for contrast */
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #38a169; /* Even darker green on hover */
+    }
+
+    label {
+      align-self: flex-start;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="green-box">
+  <h2 class="form-title">기업용 회원가입</h2>
+  <form id="registrationCompanyForm" method="post">
+ <!-- 회원가입 폼의 action을 서버의 URL로 설정 -->
+    <label for="storeName">업체명:</label>
+    <input type="text" id="storeName" name="storeName" required th:value="${storeName}">
+
+    <label for="phone">전화번호:</label>
+    <input type="tel" id="phone" name="phone" required th:value="${phone}">
+
+    <label for="address">주소:</label>
+    <input type="text" id="address" name="address" required th:value="${address}">
+
+    <label for="userId">사용자 ID:</label>
+    <input type="text" id="userId" name="userId" required th:value="${userId}">
+
+    <label for="userPw">사용자 PW:</label>
+    <input type="password" id="userPw" name="userPw" required th:value="${userPw}">
+
+    <input type="submit" value="저장">
+  </form>
+</div>
+<script src="/registerForCompany.js"></script>
+</body>
+</html>
