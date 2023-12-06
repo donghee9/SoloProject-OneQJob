@@ -18,11 +18,11 @@ document.getElementById('registrationCompanyForm').addEventListener('submit', fu
     })
         .then(response => response.json())
         .then(data => {
-            if (data === "signUp Success") {
+            if (data.message === "signUp Success") {
                 alert(formData.storeName + '님, OneQJob에 회원가입이 완료되었습니다. 메인화면으로 넘어갑니다.');
-                window.location.href = 'http://localhost:8080/OneQJob';
+
             } else {
-                alert('회원가입 실패: ' + data);
+                alert('회원가입 실패: ' + data.message);
             }
         })
         .catch(error => {
