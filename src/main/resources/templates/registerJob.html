@@ -1,0 +1,94 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일일 일자리 등록</title>
+
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0; /* Light grey background */
+    }
+
+    .green-box {
+      background-color: #48bb78; /* Green background */
+      width: 450px; /* Width of the box */
+      height: 500px; /* Height of the box */
+      padding: 20px; /* Padding inside the box */
+      box-sizing: border-box; /* Ensures padding is included in the width and height */
+      border-radius: 10px; /* Rounded corners */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px; /* Space between form elements */
+    }
+
+    h2.form-title {
+      color: white; /* Black text for title */
+      margin-bottom: 20px; /* Space below title */
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="password"] {
+      width: 100%; /* Full width of container */
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd; /* Light gray border */
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%; /* Full width of container */
+      padding: 10px;
+      border: none;
+      background-color: #38a169; /* Darker green for contrast */
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #38a169; /* Even darker green on hover */
+    }
+
+    label {
+      align-self: flex-start;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="green-box">
+  <h2 class="form-title">일일 일자리 등록하기</h2>
+  <!-- 타임리프 액션 및 메소드 속성을 사용하여 폼 구성 -->
+  <form th:action="@{/registerJob}" th:object="${jobForm}" method="post">
+    <label for="jobDescription">하는일:</label>
+    <!-- th:field 속성을 사용하여 모델 객체에 데이터 바인딩 -->
+    <input type="text" id="jobDescription" th:field="*{jobDescription}" required>
+
+    <label for="requirements">요구사항:</label>
+    <input type="text" id="requirements" th:field="*{requirements}" required>
+
+    <label for="workingDays">근무일:</label>
+    <input type="text" id="workingDays" th:field="*{workingDays}" required>
+
+    <label for="workingPlace">일하는 장소:</label>
+    <input type="text" id="workingPlace" th:field="*{workingPlace}" required>
+
+    <label for="hourlyRate">시급:</label>
+    <input type="text" id="hourlyRate" th:field="*{hourlyRate}" required>
+
+    <input type="submit" value="저장">
+  </form>
+</div>
+<script src="registerJob.js"></script>
+</body>
+</html>

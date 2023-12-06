@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneQJob 직업 목록</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .job-card {
+      display:block;
+      background-color: #48bb78;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 10px;
+    }
+
+
+    .container {
+      padding: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+
+  <div id="jobs-list">
+    <!-- Job cards will be inserted here by JavaScript -->
+  </div>
+</div>
+
+<script>
+  // Example data from server
+  const exampleDataFromServer = [
+    {
+      storeName: "Store A",
+      jobDescription: "Cashier",
+      requirements: "Experience required",
+      workingDays: "Mon-Fri",
+      tel: "010-0000-0000",
+      address: "123 Main St"
+    },
+    {
+      storeName: "Store b",
+      jobDescription: "Cashier",
+      requirements: "Experience required",
+      workingDays: "Mon-Fri",
+      tel: "010-0000-0000",
+      address: "123 Main St"
+    },
+
+    // ... more job data objects
+  ];
+
+  function displayJobs(jobsData) {
+    const jobsList = document.getElementById('jobs-list');
+
+    jobsData.forEach(job => {
+      const jobCard = document.createElement('div');
+      jobCard.classList.add('job-card');
+
+      jobCard.innerHTML = `
+          <h3>${job.storeName}</h3>
+          <p><strong>하는일:</strong> ${job.jobDescription}</p>
+          <p><strong>요구사항:</strong> ${job.requirements}</p>
+          <p><strong>근무일:</strong> ${job.workingDays}</p>
+          <p><strong>전화번호:</strong> ${job.tel}</p>
+          <p><strong>주소:</strong> ${job.address}</p>
+        `;
+
+      jobsList.appendChild(jobCard);
+    });
+  }
+
+  // Simulate fetching data from server
+  function fetchDataFromServer() {
+    // Replace this with your actual data fetching logic
+    return exampleDataFromServer;
+  }
+
+  // Call the function to display jobs on initial load
+  document.addEventListener('DOMContentLoaded', () => {
+    const jobsData = fetchDataFromServer();
+    displayJobs(jobsData);
+  });
+</script>
+
+</body>
+</html>

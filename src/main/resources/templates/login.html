@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f0f0f0;
+    }
+
+    .green-box {
+      background-color: #48bb78;
+      width: 450px;
+      height: 250px;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h2.form-title {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 5px; /* Increased padding for larger text */
+      font-size: 18px; /* Larger text size */
+      border: none;
+      background-color: #38a169;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #38a169;
+    }
+
+    label {
+      align-self: flex-start;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="green-box">
+  <h2 class="form-title">로그인</h2>
+  <form id="loginForm">
+    <label for="userId">사용자 ID:</label>
+    <input type="text" id="userId" name="userId" required>
+
+    <label for="userPw">사용자 PW:</label>
+    <input type="password" id="userPw" name="userPw" required>
+
+    <input type="submit" value="로그인">
+  </form>
+</div>
+
+<script src="login.js"></script>
+
+</body>
+</html>
