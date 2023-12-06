@@ -20,9 +20,13 @@ document.getElementById('registrationCompanyForm').addEventListener('submit', fu
         .then(data => {
             if (data.message === "signUp Success") {
                 alert(formData.storeName + '님, OneQJob에 회원가입이 완료되었습니다. 메인화면으로 넘어갑니다.');
+                location.replace("/OneQJob");
 
             } else {
-                alert('회원가입 실패: ' + data.message);
+                const msg = data.message.split(",")[0];
+                const id = data.message.split(",")[1];
+                alert('회원가입 실패: ' + msg);
+                document.getElementById(id).focus();
             }
         })
         .catch(error => {
