@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class CompanyController {
     private final CompanyService companyService;
@@ -26,10 +29,16 @@ public class CompanyController {
         try {
             ControllerHelper.validateCompanyDTO(companyDTO);
             companyService.registerCompany(companyDTO);
-            return ResponseEntity.ok("signUp Success"); // 성공 메시지
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "signUp Success");
+            return ResponseEntity.ok(response); // 성공 메시지를 JSON 형식으로 반환
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("signUp Failed: " + e.getMessage()); // 실패 메시지
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("message", "signUp Failed: " + e.getMessage());
+            return ResponseEntity.badRequest().body(errorResponse); // 실패 메시지를 JSON 형식으로 반환
         }
     }
-    }
+
+
+}
 
