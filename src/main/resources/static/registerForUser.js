@@ -9,7 +9,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         userPw: document.getElementById('userPw').value
     };
 
-    fetch('/your-server-endpoint', {
+    fetch('/OneQJob/registerForIndividual', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -18,11 +18,15 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     })
         .then(response => response.json())
         .then(data => {
-            console.log('Success:', data);
-            // 성공적으로 데이터를 전송한 후의 처리 코드
+            if (data.message === "signUp Success") {
+                alert(formData.storeName + '님, OneQJob에 회원가입이 완료되었습니다. 메인화면으로 넘어갑니다.');
+
+            } else {
+                alert('회원가입 실패: ' + data.message);
+            }
         })
-        .catch((error) => {
+        .catch(error => {
             console.error('Error:', error);
-            // 에러 처리 코드
+            alert('서버 오류가 발생했습니다.');
         });
 });

@@ -69,7 +69,7 @@
 <div class="green-box">
   <h2 class="form-title">일반 회원가입</h2>
   <!-- 타임리프 액션 및 메소드 속성을 사용하여 폼 구성 -->
-  <form th:action="@{/registerIndividual}" method="post">
+  <form id="registrationIndividualForm" method="post">
     <label for="userName">이름:</label>
 
     <input type="text" id="userName" name="userName" required th:value="${userName}">
@@ -89,6 +89,6 @@
     <input type="submit" value="저장">
   </form>
 </div>
-<script src="registerForUser.js"></script>
+<script src="/registerForUser.js"></script>
 </body>
 </html>
